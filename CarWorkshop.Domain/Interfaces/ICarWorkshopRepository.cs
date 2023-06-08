@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarWorkshop.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,6 @@ namespace CarWorkshop.Domain.Interfaces
     public interface ICarWorkshopRepository
     {
         Task Create(Domain.Entities.CarWorkshop carWorkshop);
+        Task<Domain.Entities.CarWorkshop?> GetByName(string name);
     }
 }
