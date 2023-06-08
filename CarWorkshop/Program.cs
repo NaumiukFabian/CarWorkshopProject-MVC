@@ -1,4 +1,5 @@
-using CarWorkshop.Extensions;
+using CarWorkshop.Infrastructure.Extensions;
+using CarWorkshop.Application.Extensions;
 using CarWorkshop.Infrastructure.Persistence;
 using CarWorkshop.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
