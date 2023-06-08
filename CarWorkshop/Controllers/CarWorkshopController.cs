@@ -11,11 +11,17 @@ namespace CarWorkshop.Controllers
         {
             _carWorkshopService = carWorkshopService;
         }
-        [HttpPost]
-        public async Task<IActionResult> Creat(Domain.Entities.CarWorkshop carWorkshop)
+        public ActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Domain.Entities.CarWorkshop carWorkshop)
+        {
+            carWorkshop.EncodeName();
             await _carWorkshopService.Creat(carWorkshop);
-            return RedirectToAction(nameof(Creat));
+            return RedirectToAction(nameof(Create));
         }
     }
 }
