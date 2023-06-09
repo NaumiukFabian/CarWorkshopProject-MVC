@@ -1,5 +1,4 @@
-﻿using CarWorkshop.Application.Services;
-using CarWorkshop.Domain.Interfaces;
+﻿using CarWorkshop.Domain.Interfaces;
 using CarWorkshop.Infrastructure.Persistence;
 using CarWorkshop.Infrastructure.Repositories;
 using CarWorkshop.Infrastructure.Seeders;
