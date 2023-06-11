@@ -2,6 +2,7 @@
 using CarWorkshop.Application.ApplicationUser;
 using CarWorkshop.Application.CarWorkshop;
 using CarWorkshop.Application.CarWorkshop.EditCarWorkshop;
+using CarWorkshop.Application.CarWorkshopService;
 using CarWorkshop.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using System;
@@ -37,6 +38,9 @@ namespace CarWorkshop.Application.Mappings
                 .ForMember(e => e.PhoneNumber, opt => opt.MapFrom(src => src.ContactDetails.PhoneNumber));
 
             CreateMap<CarWorkshopDto, EditCarWorkshopCommand>();
+
+            CreateMap<CarWorkshopServiceDto, Domain.Entities.CarWorkshopService>()
+                .ReverseMap();
         }
     }
 }
