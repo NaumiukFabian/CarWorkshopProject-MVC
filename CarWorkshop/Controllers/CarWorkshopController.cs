@@ -4,6 +4,7 @@ using CarWorkshop.Application.CarWorkshop.Commands.CreateCarWorkshop;
 using CarWorkshop.Application.CarWorkshop.EditCarWorkshop;
 using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using CarWorkshop.Application.CarWorkshop.Queries.GetCarWorkshopByEncodedName;
+using CarWorkshop.Application.CarWorkshopService.Commands;
 using CarWorkshop.Extensions;
 using CarWorkshop.Models;
 using MediatR;
@@ -82,6 +83,20 @@ namespace CarWorkshop.Controllers
 
             await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = "Owner")]
+        [HttpPost]
+        [Route("CarWorkshop/CarWorkshopService")]
+        public async Task<IActionResult> CreateCarWorkshopService(CreateCarWorkshopServiceCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _mediator.Send(command);
+            return Ok();
         }
     }
 }
