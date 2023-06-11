@@ -21,7 +21,6 @@ namespace CarWorkshop.Application.CarWorkshop.EditCarWorkshop
         public async Task<Unit> Handle(EditCarWorkshopCommand request, CancellationToken cancellationToken)
         {
             var carWorkshop = await _carWorkshopRepository.GetByEncodedName(request.EncodedName!);
-
             var user = _userContext.GetCurrentUser();
             var isEditable = user != null && carWorkshop.CreatedById == user.Id;
 

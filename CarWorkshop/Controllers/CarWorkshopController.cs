@@ -25,9 +25,9 @@ namespace CarWorkshop.Controllers
             return View(carWorkShops);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Owner")]
         public IActionResult Create()
-        {    
+        {
             return View();
         }
 
