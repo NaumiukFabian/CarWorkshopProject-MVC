@@ -42,6 +42,12 @@ namespace CarWorkshop.Controllers
         public async Task<IActionResult> Edit(string encodedName)
         {
             var dto = await _mediator.Send(new GetCarWorkshopByEncodedNameQuery(encodedName));
+
+            if(!dto.IsEditable)
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
             EditCarWorkshopCommand model = _mapper.Map<EditCarWorkshopCommand>(dto);
             return View(model);
         }
