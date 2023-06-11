@@ -5,6 +5,7 @@ using CarWorkshop.Application.CarWorkshop.EditCarWorkshop;
 using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using CarWorkshop.Application.CarWorkshop.Queries.GetCarWorkshopByEncodedName;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarWorkshop.Controllers
@@ -24,8 +25,9 @@ namespace CarWorkshop.Controllers
             return View(carWorkShops);
         }
 
+        [Authorize]
         public IActionResult Create()
-        {
+        {    
             return View();
         }
 
@@ -44,6 +46,7 @@ namespace CarWorkshop.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CreateCarWorkshopCommand command)
         {
@@ -51,6 +54,8 @@ namespace CarWorkshop.Controllers
             {
                 return View(command);
             }
+
+            
             await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
