@@ -5,9 +5,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edit @Model.Name</h1>
 
-<h4>EditCarWorkshopCommand</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -51,9 +50,11 @@
 </div>
 
 <div>
-    <partial name="_CreateCarWorkshopService" model="new CreateCarWorkshopServiceCommand(){ CarWorkshopEncodedName = Model.EncodedName!}"/>
+    <partial name="_CreateCarWorkshopService" model="new CreateCarWorkshopServiceCommand(){ CarWorkshopEncodedName = Model.EncodedName!}" />
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
+
+<div id="services" class="row" data-encodedName="@Model.EncodedName"></div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
